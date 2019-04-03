@@ -1,5 +1,5 @@
 FROM        phusion/baseimage:0.11
-LABEL       maintainer="LedoKun"
+LABEL       maintainer="mazhuravlev"
 
 ENV         DEBIAN_FRONTEND noninteractive
 ENV         LC_ALL C.UTF-8

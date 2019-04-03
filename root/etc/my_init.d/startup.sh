@@ -9,7 +9,12 @@ if [ ! -f /sshkey_generated ]; then
     touch /sshkey_generated
 
     # Set the user passwd
-    USER_PASSWORD=`pwgen -c -n -1 10`
+    if [ -z "$USER_PASSWORD" ]; then
+        echo "Generating random password";
+        USER_PASSWORD=`pwgen -c -n -1 10`
+    else 
+        echo "Setting password from environment variable";
+    fi
     echo ${USER_PASSWORD} > ${HOME}/default_password
     echo -e "${USER_PASSWORD}\n${USER_PASSWORD}" | passwd project > /dev/nul 2>&1
     echo "Password for project user: ${USER_PASSWORD}"
